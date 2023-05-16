@@ -5,6 +5,9 @@ var cf_svc = require( './app/vcap_services')
 
 app.set( 'views', __dirname + '/views')
 app.set( 'view engine', 'jade')
+// This is the place for the js public scripted to be executed.
+// Express will automatically set the correct MIME type for the JavaScript file based on its file extension.
+// The browser will interpret the JavaScript file correctly, and the MIME type error should be resolved.
 app.use( express.static( __dirname + '/public'))
 
 app.get( '/', function ( req, res) {

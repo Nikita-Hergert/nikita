@@ -1,0 +1,34 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+      {
+        "name": "Strat Program",
+        "type": "node",
+        "request": "launch",
+        "program": "${workspaceFolder}/server.js",
+        "runtimeExecutable": "node",
+        "cwd": "${workspaceFolder}",
+        "restart": true,
+        "console": "integratedTerminal"
+      },
+      {
+        "name": "Attach Debugger",
+        "type": "node",
+        "request": "attach",
+        "port": 9229,
+        "sourceMaps": true,
+        "outFiles": [
+          "${workspaceFolder}/**/*.js"
+        ],
+        "skipFiles": [
+          "<node_internals>/**"
+        ]
+      }
+    ],
+    "compounds": [
+      {
+        "name": "Start with Debugging",
+        "configurations": ["Strat Program", "Attach Debugger"]
+      }
+    ]
+  }
