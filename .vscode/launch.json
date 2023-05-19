@@ -17,6 +17,11 @@
         "request": "attach",
         "port": 9229,
         "sourceMaps": true,
+        // "showAsyncStacks": true,
+        // "resolveSourceMapLocations": [
+        //   "${workspaceFolder}/**",
+        //   "!**/node_modules/**"
+        // ],
         "outFiles": [
           "${workspaceFolder}/**/*.js"
         ],

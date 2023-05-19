@@ -1,4 +1,8 @@
 var express = require( 'express')
+// in order to load the entrypoint for the program as well for debugging
+require('./public/start');
+
+// Create and load the express server
 var app = express()
 var cf_app = require( './app/vcap_application')
 var cf_svc = require( './app/vcap_services')
@@ -25,4 +29,14 @@ app.get( '/', function ( req, res) {
   })
 })
 
-app.listen(process.env.PORT || 4000)
+const server = app.listen(process.env.PORT || 4000, () => {
+  console.log(`Example app listening on port ${process.env.PORT || 4000}`)
+})
+
+// Not sure whether this works reliably
+server.on('error', function(err) {
+  server.close(() => {
+    console.log('Server stopped.');
+    process.exit();
+  });
+});

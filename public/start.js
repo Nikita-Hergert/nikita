@@ -1,4 +1,4 @@
 function myFunction() {
     console.log("TEST -------------------- hier")
-    alert('Hello world!sdfdsfdsasddfs ');
+    alert('Hello world ');
 }
