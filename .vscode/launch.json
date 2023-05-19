@@ -4,15 +4,17 @@
       {
         "type": "node",
         "request": "launch",
-        "name": "Debug with Babel",
-        "runtimeExecutable": "${workspaceFolder}/node_modules/.bin/babel-node",
-        "runtimeArgs": ["--presets", "@babel/preset-env"],
-        // "args": ["${workspaceFolder}/src/server.js"],
-        "program": "${workspaceFolder}/dist/server.js",
+        "name": "Start Watching",
+        "runtimeExecutable": "npm",
+        "runtimeArgs": [
+          "run",
+          "watch"
+        ],
+        "restart": true,
         "sourceMaps": true,
-        "outFiles": ["${workspaceFolder}/dist/**/*.js"],
         "console": "integratedTerminal",
         "internalConsoleOptions": "neverOpen",
+        "outFiles": ["${workspaceFolder}/dist/**/*.js"],
         "preLaunchTask": "Build",
       }
     ]
