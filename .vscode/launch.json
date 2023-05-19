@@ -2,38 +2,18 @@
     "version": "0.2.0",
     "configurations": [
       {
-        "name": "Strat Program",
         "type": "node",
         "request": "launch",
-        "program": "${workspaceFolder}/server.js",
-        "runtimeExecutable": "node",
-        "cwd": "${workspaceFolder}",
-        "restart": true,
-        "console": "integratedTerminal"
-      },
-      {
-        "name": "Attach Debugger",
-        "type": "node",
-        "request": "attach",
-        "port": 9229,
+        "name": "Debug with Babel",
+        "runtimeExecutable": "${workspaceFolder}/node_modules/.bin/babel-node",
+        "runtimeArgs": ["--presets", "@babel/preset-env"],
+        // "args": ["${workspaceFolder}/src/server.js"],
+        "program": "${workspaceFolder}/dist/server.js",
         "sourceMaps": true,
-        // "showAsyncStacks": true,
-        // "resolveSourceMapLocations": [
-        //   "${workspaceFolder}/**",
-        //   "!**/node_modules/**"
-        // ],
-        "outFiles": [
-          "${workspaceFolder}/**/*.js"
-        ],
-        "skipFiles": [
-          "<node_internals>/**"
-        ]
-      }
-    ],
-    "compounds": [
-      {
-        "name": "Start with Debugging",
-        "configurations": ["Strat Program", "Attach Debugger"]
+        "outFiles": ["${workspaceFolder}/dist/**/*.js"],
+        "console": "integratedTerminal",
+        "internalConsoleOptions": "neverOpen",
+        "preLaunchTask": "Build",
       }
     ]
   }

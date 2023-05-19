@@ -1,6 +1,4 @@
 var express = require( 'express')
-// in order to load the entrypoint for the program as well for debugging
-require('./public/start');
 
 // Create and load the express server
 var app = express()
