@@ -8,7 +8,8 @@
         "runtimeExecutable": "npm",
         "runtimeArgs": [
           "run",
-          "watch"
+          "watch",
+          "--inspect=9229"
         ],
         "restart": true,
         "sourceMaps": true,
@@ -16,6 +17,24 @@
         "internalConsoleOptions": "neverOpen",
         "outFiles": ["${workspaceFolder}/dist/**/*.js"],
         "preLaunchTask": "Build",
+      },
+      {
+        "type": "node",
+        "request": "launch",
+        "name": "Testing",
+        "runtimeExecutable": "npm",
+        "runtimeArgs": [
+          "run",
+          "test",
+          "${workspaceFolder}/test/**/*.test.js"
+        ],
+        "cwd": "${workspaceFolder}",
+        "console": "integratedTerminal",
+        "internalConsoleOptions": "neverOpen",
+        "skipFiles": [
+          "<node_internals>/**/*.js",
+          "${workspaceFolder}/node_modules/**/*.js"
+        ]
       }
     ]
   }
