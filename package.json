@@ -5,11 +5,12 @@
     "watch": "nodemon --exec babel-node ./src/server.js",
     "build": "babel src --out-dir dist --source-maps",
     "test": "mocha",
-    "copyFiles": "cp -rn src/* dist"
+    "copyFiles": "rm -r dist/* && cp -rn src/* dist"
   },
   "dependencies": {
     "express": "^4.13.4",
-    "jade": "^1.11.0"
+    "jade": "^1.11.0",
+    "sqlite3": "^5.1.6"
   },
   "devDependencies": {
     "@babel/core": "^7.21.8",

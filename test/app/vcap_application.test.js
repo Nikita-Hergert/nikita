@@ -9,4 +9,13 @@ describe('Beck End (BE) Tests', function () {
       const appappName = app.get_app_name();
       expect(appappName).to.be.undefined;
     });
+
+    // TODO write more tests
+    it('Todo Test', function () {
+      // TODO more tests....
+    });
+    it('Todo Test', function () {
+      // TODO more tests....
+    });
+    // TODO write even more tests
 });

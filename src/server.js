@@ -4,6 +4,7 @@ var express = require( 'express')
 var app = express()
 var cf_app = require( './app/vcap_application')
 var cf_svc = require( './app/vcap_services')
+var { getEntries, postEntries } = require( './app/index')
 
 app.set( 'views', __dirname + '/public/views')
 app.set( 'view engine', 'jade')
@@ -26,6 +27,15 @@ app.get( '/', function ( req, res) {
     service_plan:       cf_svc.get_service_plan()
   })
 })
+
+// TODO rename the path "/entries" and create another button in the UI to naviagte to it
+app.get('/entries', getEntries)
+
+// TODO create another path (method) to store the current written text
+
+
+// TODO create another path (method) to delete the entries from the DB
+
 
 const server = app.listen(process.env.PORT || 4000, () => {
   console.log(`Example app listening on port ${process.env.PORT || 4000}`)
