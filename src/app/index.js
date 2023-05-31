@@ -5,7 +5,7 @@ function getEntries(req, res) {
     // TODO get entries from the DB and return them as shown bellow
 
     // TODO send a meaningfull message
-    res.send({})
+    res.send({nmae: "test"})
 }
 
 // TODO connection this function so that it can be called from the UI

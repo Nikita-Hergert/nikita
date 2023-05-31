@@ -12,9 +12,8 @@ html
 
   body
     //- TODO try to make the button more centered in the UI
-    //- TODO Create a text field to write text and send it to the BE
-    //- TODO Create another button to delete always the last entry
-    button(type='button', onclick='mySecondFunction()') Click me
+    //- TODO Create a text field to write text and send it to the BE--
+    //- TODO Create another button to delete always the last entry--
     .container.pan
       section.header
         include ../partials/header
@@ -22,3 +21,9 @@ html
         include ../partials/content
       section.footers
         include ../partials/footer
+    input(type='text', style='display: block; margin: 0 auto;' id='text')
+    button(type='button', style='display: block; margin: 0 auto;' onclick='absenden()') Senden
+    button(type='button', style='display: block; margin: 0 auto;' onclick='reset()') Delete Last Entry
+    
+
+

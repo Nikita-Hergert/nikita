@@ -1,5 +1,5 @@
-// TODO rename this function and all should work as before
-function myFunction() {
+// TODO rename this function and all should work as before--
+function absenden() {
     fetch('/entries')
     .then(data => {
       // Process the data returned from the backend
@@ -12,30 +12,31 @@ function myFunction() {
 }
 
 // TODO rename and create button in the UI to call this function as above
-function mySecondFunction() {
+function absenden() {
 
     // TODO use the debugger command to debug in the UI
     // debugger;
     const host = window.location.host
     const url = host + '/entries';
 
-    // TODO example data replace this with the text feal from the UI
-    const data = {
-      name: 'John Doe',
-      email: 'johndoe@example.com'
-    };
+    // TODO example data replace this with the text field from the UI--
+  const inputElement = document.getElementById('text');
+  inputElement.addEventListener('input', function(event) {
+    const enteredText = event.target.value;
+    console.log('Eingabe:', enteredText);
+  });
 
-    // TODO find the issue
-    fetch('url', {
+    // TODO find the issue--------------
+    fetch(url, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify(data)
+      body: JSON.stringify(text)
     })
       .then(response => {
-        console.log(response)
-        response.json()
+        console.log(response);
+        return response.json(); //return
       })
       .then(data => {
         // TODO Do you get the correct data back
@@ -44,6 +45,22 @@ function mySecondFunction() {
       })
       .catch(error => {
         // TODO handle the error better if possible
-        console.error('Error:');
+        console.error('Error:', error);
       });
+}
+
+function reset() {
+  fetch('/entries/last', {
+    method: 'DELETE'
+  })
+    .then(response => {
+      if (response.ok) {
+        console.log('Last entry deleted');
+      } else {
+        console.error('Error deleting last entry');
+      }
+    })
+    .catch(error => {
+      console.error('Error deleting last entry:', error);
+    });
 }
