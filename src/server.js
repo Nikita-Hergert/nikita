@@ -4,7 +4,7 @@ var express = require( 'express')
 var app = express()
 var cf_app = require( './app/vcap_application')
 var cf_svc = require( './app/vcap_services')
-var { getEntries, postEntries } = require( './app/index')
+var { getEntries, postEntries, deleteEntries } = require( './app/index')
 
 app.set( 'views', __dirname + '/public/views')
 app.set( 'view engine', 'jade')
@@ -12,6 +12,9 @@ app.set( 'view engine', 'jade')
 // Express will automatically set the correct MIME type for the JavaScript file based on its file extension.
 // The browser will interpret the JavaScript file correctly, and the MIME type error should be resolved.
 app.use( express.static( __dirname + '/public'))
+
+app.use(express.json()); // Parse JSON-encoded bodies
+app.use(express.urlencoded({ extended: true })); // Parse URL-encoded bodies
 
 app.get( '/', function ( req, res) {
   res.render( 'pages/index', {
@@ -32,10 +35,10 @@ app.get( '/', function ( req, res) {
 app.get('/entries', getEntries)
 
 // TODO create another path (method) to store the current written text
-
+app.post('/entries', postEntries)
 
 // TODO create another path (method) to delete the entries from the DB
-
+app.delete('/entries', deleteEntries)
 
 const server = app.listen(process.env.PORT || 4000, () => {
   console.log(`Example app listening on port ${process.env.PORT || 4000}`)

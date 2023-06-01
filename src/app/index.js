@@ -1,43 +1,53 @@
 const sqlite3 = require('sqlite3').verbose();
 
+let lifo = [];
+
 function getEntries(req, res) {
 
     // TODO get entries from the DB and return them as shown bellow
 
     // TODO send a meaningfull message
-    res.send({nmae: "test"})
+    res.status(200).send({name: lifo[0]})
 }
 
 // TODO connection this function so that it can be called from the UI
 function postEntries(req, res) {
     const host = req.hostname;
-    res.send(`Current host: ${host}`);
+    console.log(`Current body data: ${req.body.data}`);
 
-    const db = new sqlite3.Database(':memory:');
+    lifo[0] = "textField";
 
-    db.serialize(() => {
-    db.run("CREATE TABLE lorem (info TEXT)");
+    // const db = new sqlite3.Database(':memory:');
 
-    const stmt = db.prepare("INSERT INTO lorem VALUES (?)");
+    // db.serialize(() => {
+    // db.run("CREATE TABLE lorem (info TEXT)");
 
-    // TODO Change the number of iterations
-    for (let i = 0; i < 10; i++) {
-        stmt.run("Ipsum " + i);
-    }
-    stmt.finalize();
+    // const stmt = db.prepare("INSERT INTO lorem VALUES (?)");
 
-    db.each("SELECT rowid AS id, info FROM lorem", (err, row) => {
-            console.log(row.id + ": " + row.info);
-        });
-    });
+    // // TODO Change the number of iterations
+    // for (let i = 0; i < 10; i++) {
+    //     stmt.run("Ipsum " + i);
+    // }
+    // stmt.finalize();
 
-    db.close();
+    // db.each("SELECT rowid AS id, info FROM lorem", (err, row) => {
+    //         console.log(row.id + ": " + row.info);
+    //     });
+    // });
+
+    // db.close();
 
     // TODO send a meaningfull message from above
-    res.send({});
+    res.send({post: "testOK"});
+}
+
+function deleteEntries(req, res) {
+
+    res.send({todo: "delete the entries"});
 }
 
 module.exports = {
     getEntries,
-    postEntries
+    postEntries,
+    deleteEntries,
 };
